@@ -83,7 +83,7 @@ async def startup_event():
     for voice, spk_path in VOICE_MAP.items():
         if os.path.exists(spk_path):
             app.state.spk_emb_map[voice] = torch.load(
-                spk_path, map_location=torch.device("cpu")
+                spk_path, map_location=torch.device("cpu")，weights_only=False
             )
             logger.info(f"Preloading speaker embedding: {voice} -> {spk_path}")
         else:
